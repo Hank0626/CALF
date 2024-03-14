@@ -1,4 +1,4 @@
-# Taming Pre-trained Language Models for Enhanced Generalized Time Series Forecasting through Cross-modal Knowledge Distillation
+# Taming Pre-trained Language Models for Generalized Time Series Forecasting through Cross-modal Knowledge Distillation
 
 [![](http://img.shields.io/badge/cs.LG-arXiv%3A2403.07300-B31B1B.svg)](https://arxiv.org/abs/2403.07300)
 
