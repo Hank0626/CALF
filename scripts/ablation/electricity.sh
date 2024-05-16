@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=5
 
 seq_len=96
-model=GPT4TS
+model=LLaTA
 
 for pred_len in 96
 do

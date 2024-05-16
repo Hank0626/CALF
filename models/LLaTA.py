@@ -1,5 +1,3 @@
-# 原版
-
 import numpy as np
 import torch
 import torch.nn as nn
@@ -47,71 +45,6 @@ class Encoder_PCA(nn.Module):
         x = x.transpose(0, 1)
 
         return x_time, x
-
-
-class Decoder(nn.Module):
-    def __init__(self, output_dim, hidden_dim=768, num_heads=12, num_encoder_layers=2):
-        super(Decoder, self).__init__()
-        self.linear = nn.Linear(hidden_dim, output_dim)
-
-        encoder_layer = nn.TransformerEncoderLayer(d_model=hidden_dim, nhead=num_heads)
-        self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_encoder_layers)
-
-    def forward(self, x):
-        x = self.transformer_encoder(x.transpose(0, 1)).transpose(0, 1)
-        x = self.linear(x)
-
-        return x
-
-class Encoder_Adaptive(nn.Module):
-    def __init__(self, input_dim, word_embedding, hidden_dim=768, num_heads=12, num_encoder_layers=1):
-        super(Encoder_Adaptive, self).__init__()
-        self.register_buffer('word_embedding', word_embedding)
-        self.linear = nn.Linear(input_dim, hidden_dim)
-
-        encoder_layer = nn.TransformerEncoderLayer(d_model=hidden_dim, nhead=num_heads)
-        self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=num_encoder_layers)
-
-        self.dict_proj = nn.Sequential(nn.Linear(768,1000),nn.GELU(),nn.Linear(1000,500))
-
-        self.cross_attention = nn.MultiheadAttention(embed_dim=hidden_dim, num_heads=num_heads)
-
-
-
-    def forward(self, x):
-        B = x.shape[0]
-        word_weight_mat = self.dict_proj(self.word_embedding).transpose(-1,-2)
-        word_weight_mat =  torch.softmax(word_weight_mat/0.001,dim=-1)
-        #word_weight_mat =  F.gumbel_softmax(word_weight_mat.sigmoid(), tau=0.01, hard=True, dim=-1)
-        #word_weight_mat = (word_weight_mat/0.01).sigmoid()/word_weight_mat.shape[-1]
-        word_embedding = word_weight_mat@self.word_embedding
-        word_embedding = word_embedding.repeat(B,1,1)
-
-        x = self.linear(x)
-
-        x = self.transformer_encoder(x.transpose(0, 1)).transpose(0, 1)
-
-        x_time = x
-
-        q = x.transpose(0, 1)
-        k = v = word_embedding.transpose(0, 1)
-        x_text, _ = self.cross_attention(q, k, v)
-
-        x_text = x_text.transpose(0, 1)
-
-        return x_time, x_text
-
-class Scale(nn.Module):
-    def __init__(self, c):
-        super(Scale, self).__init__()
-        self.time_scale = nn.Parameter(torch.ones((c, 1)), requires_grad=True)
-        self.text_scale = nn.Parameter(torch.ones((c, 1)), requires_grad=True)
-        
-    def forward(self, x, s):
-        if s == 'time':
-            return x * self.time_scale
-        else:
-            return x * self.text_scale
 
 class Model(nn.Module):
     def __init__(self, configs, device):

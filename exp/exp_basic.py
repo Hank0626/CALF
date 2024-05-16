@@ -1,13 +1,13 @@
 import os
 import torch
-from models import GPT4TS
+from models import LLaTA
 
 
 class Exp_Basic(object):
     def __init__(self, args):
         self.args = args
         self.model_dict = {
-            "GPT4TS": GPT4TS,
+            "LLaTA": LLaTA,
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)

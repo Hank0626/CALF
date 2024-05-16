@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=1
 
 seq_len=96
-model=GPT4TS
+model=LLaTA
 
 for percent in 100
 do
