@@ -1,4 +1,4 @@
-# Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning
+# CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning
 
 [![](http://img.shields.io/badge/cs.LG-arXiv%3A2403.07300-B31B1B.svg)](https://arxiv.org/abs/2403.07300)
 
