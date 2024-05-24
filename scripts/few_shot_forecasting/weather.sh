@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=0
 
 seq_len=96
-model=LLaTA
+model=CALF
 
 for percent in 10
 do

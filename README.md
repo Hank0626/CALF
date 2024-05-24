@@ -1,7 +1,33 @@
+
+<p align="center">
+    <img src="assets/logo.png" width="100"> 
+</p>
+
 # CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning
 
 [![](http://img.shields.io/badge/cs.LG-arXiv%3A2403.07300-B31B1B.svg)](https://arxiv.org/abs/2403.07300)
 
+
+## Introduction
+
+CALF (Orignal name: LLaTA) is a novel  cross-modal fine-tuing framework that effectively bridges the ***distribution discrepancy*** between temporal data and the textual nature of LLMs, as shown in [Figure 1](#fig-discrepancy).
+
+<p align="center" id="fig-discrepancy">
+    <img src="assets/discrepency.png" width="500" alt="Discrepancy Image">
+    <br>
+    <strong>Figure 1:</strong> The t-SNE visualization of pre-trained word token embeddings of LLM with temporal tokens from <a href="https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All">GPT4TS</a> (Left) and our method (Right). Our method shows more cohesive integration, indicating effective modality alignment.
+</p>
+
+To bridge the modality gap between textual and temporal data, we introduce three meticulously designed cross-modal fine-tuning techniques (see [Figure 2](#fig-workflow)): 
+- **Cross-Modal Match Module** integrates time series and textual inputs through principal word embedding extraction and a cross-attention mechanism, ensuring efficient alignment of the marginal input distribution between time series and text.
+- **Feature Regularization Loss** aligns the outputs of each intermediate layer, ensuring that gradients at every layer are more effectively guided for better weight updates.
+- **Output Consistency Loss** ensures that the output representations of textual and temporal series modalities correspond effectively, resolving discrepancies in the representation space and maintaining consistent semantic context for time series data. 
+
+<p align="center" id="fig-workflow">
+    <img src="assets/workflow.png" width="500"> 
+    <br>
+    <strong>Figure 2:</strong> Conceptual illustration of cross-modal fine-tuning technique.
+</p>
 
 ## Prerequisites
 Before proceeding, ensure Python 3.9 is installed. Install the required dependencies with the following command:
@@ -45,7 +71,7 @@ These embeddings will be saved in `./wte_pca_500.pt`.
 
 ## Model Training
 
-Training scripts are located in the `./scripts` folder. For instance, to train the LLaTA model on the ETTh2 dataset for long-term forecasting, execute:
+Training scripts are located in the `./scripts` folder. For instance, to train the CALF model on the ETTh2 dataset for long-term forecasting, execute:
 
 ```
 sh scripts/long_term_forecasting/ETTh2.sh
@@ -68,7 +94,7 @@ If this repository contributes to your research, please consider citing our work
 
 ```
 @article{liu2024taming,
-      title={Taming Pre-trained LLMs for Generalised Time Series Forecasting via Cross-modal Knowledge Distillation}, 
+      title={CALF: Aligning LLMs for Time Series Forecasting via Cross-modal Fine-Tuning}, 
       author={Liu, Peiyuan and Guo, Hang and Dai, Tao and Li, Naiqi and Bao, Jigang and Ren, Xudong and Jiang, Yong and Xia, Shu-Tao},
       journal={arXiv preprint arXiv:2403.07300},
       year={2024},

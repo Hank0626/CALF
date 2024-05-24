@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=0
 
 seq_len=96
-model=LLaTA
+model=CALF
 
 for pred_len in 96 192 336 720
 do

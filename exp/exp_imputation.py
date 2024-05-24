@@ -2,7 +2,7 @@ from data_provider.data_factory import data_provider
 from exp.exp_basic import Exp_Basic
 from utils.tools import EarlyStopping, adjust_learning_rate, visual
 from utils.metrics import metric
-from utils.distillationLoss import DistillationLoss
+from utils.cmLoss import cmLoss
 import torch
 import torch.nn as nn
 from torch import optim
@@ -40,13 +40,13 @@ class Exp_Imputation(Exp_Basic):
         return model_optim, loss_optim
 
     def _select_criterion(self):
-        criterion = DistillationLoss(self.args.distill_loss, 
-                                     self.args.logits_loss, 
-                                     self.args.task_loss, 
-                                     self.args.task_name, 
-                                     self.args.feature_w, 
-                                     self.args.logits_w, 
-                                     self.args.task_w)
+        criterion = cmLoss(self.args.distill_loss, 
+                           self.args.logits_loss, 
+                           self.args.task_loss, 
+                           self.args.task_name, 
+                           self.args.feature_w, 
+                           self.args.logits_w, 
+                           self.args.task_w)
         return criterion
 
     def _select_vali_criterion(self):

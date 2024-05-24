@@ -1,6 +1,6 @@
 export CUDA_VISIBLE_DEVICES=0
 
-model_name=LLaTA
+model_name=CALF
 
 for interval in 'Monthly' 'Quarterly' 'Yearly' 'Daily' 'Hourly' 'Weekly'
 

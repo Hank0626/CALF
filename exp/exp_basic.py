@@ -1,13 +1,13 @@
 import os
 import torch
-from models import LLaTA
+from models import CALF
 
 
 class Exp_Basic(object):
     def __init__(self, args):
         self.args = args
         self.model_dict = {
-            "LLaTA": LLaTA,
+            "CALF": CALF,
         }
         self.device = self._acquire_device()
         self.model = self._build_model().to(self.device)
