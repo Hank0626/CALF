@@ -35,8 +35,8 @@ python -u run.py \
     --patience 20 \
     --gpt_layers 6 \
     --task_loss smape \
-    --logits_loss mase \
-    --distill_loss smooth_l1 \
+    --output_loss mase \
+    --feature_loss smooth_l1 \
 
 echo '====================================================================================================================='
 done

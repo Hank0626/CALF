@@ -9,9 +9,9 @@ do
     do
         for feature_w in 0 0.01
         do
-            for logits_w in 0 1
+            for output_w in 0 1
             do
-                if [ "$task_w" = "0" ] && [ "$feature_w" = "0" ] && [ "$logits_w" = "0" ];
+                if [ "$task_w" = "0" ] && [ "$feature_w" = "0" ] && [ "$output_w" = "0" ];
                 then
                     continue
                 fi
@@ -46,7 +46,7 @@ python run.py \
     --lora_dropout 0.1 \
     --patience 3 \
     --task_w $task_w \
-    --logits_w $logits_w \
+    --output_w $output_w \
     --feature_w $feature_w
 
 

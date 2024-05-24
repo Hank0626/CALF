@@ -83,8 +83,8 @@ if __name__ == '__main__':
     parser.add_argument('--lradj', type=str, default='type1', help='adjust learning rate')
     parser.add_argument('--use_amp', action='store_true', help='use automatic mixed precision training', default=False)
     parser.add_argument('--task_loss', type=str, default='l1', help='task loss function')
-    parser.add_argument('--distill_loss', type=str, default='l1', help='distillation loss function')
-    parser.add_argument('--logits_loss', type=str, default='l1', help='logits loss function')
+    parser.add_argument('--feature_loss', type=str, default='l1', help='distillation loss function')
+    parser.add_argument('--output_loss', type=str, default='l1', help='logits loss function')
 
     # GPU
     parser.add_argument('--use_gpu', type=bool, default=True, help='use gpu')
@@ -112,7 +112,7 @@ if __name__ == '__main__':
     # loss weight
     parser.add_argument('--task_w', type=float, default=1.0)
     parser.add_argument('--feature_w', type=float, default=0.01)
-    parser.add_argument('--logits_w', type=float, default=1.0)
+    parser.add_argument('--output_w', type=float, default=1.0)
     
     # gpt
     parser.add_argument('--gpt_layers', type=int, default=32, help='number of hidden layers in gpt')

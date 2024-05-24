@@ -48,12 +48,12 @@ class Exp_Short_Term_Forecast(Exp_Basic):
         return model_optim, loss_optim
 
     def _select_criterion(self):
-        criterion = cmLoss(self.args.distill_loss, 
-                           self.args.logits_loss, 
+        criterion = cmLoss(self.args.feature_loss, 
+                           self.args.output_loss, 
                            self.args.task_loss, 
                            self.args.task_name, 
                            self.args.feature_w, 
-                           self.args.logits_w, 
+                           self.args.output_w, 
                            self.args.task_w)
         return criterion
     

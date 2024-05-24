@@ -37,10 +37,10 @@ python run.py \
     --lora_dropout 0.1 \
     --patience 5 \
     --task_loss smooth_l1 \
-    --logits_loss smooth_l1 \
-    --distill_loss smooth_l1 \
+    --output_loss smooth_l1 \
+    --feature_loss smooth_l1 \
     --feature_w 0 \
-    --logits_w 0 \
+    --output_w 0 \
 
 echo '====================================================================================================================='
 done

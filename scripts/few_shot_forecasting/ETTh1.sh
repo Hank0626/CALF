@@ -36,7 +36,7 @@ python run.py \
     --lora_dropout 0.1 \
     --patience 10 \
     --percent 5 \
-    --logits_w 0 \
+    --output_w 0 \
     --feature_w 0 \
     --task_loss l1
 
