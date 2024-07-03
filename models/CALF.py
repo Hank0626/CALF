@@ -1,17 +1,8 @@
-import numpy as np
 import torch
 import torch.nn as nn
-from torch import optim
-import torch.nn.functional as F
-from transformers.models.gpt2.modeling_gpt2 import GPT2Model
-from transformers import BertTokenizer, BertModel
 from einops import rearrange
-from transformers.models.gpt2.configuration_gpt2 import GPT2Config
-from peft import get_peft_config, get_peft_model, get_peft_model_state_dict, LoraConfig, TaskType
+from peft import LoraConfig, TaskType
 from models.GPT2_arch import AccustumGPT2Model
-from transformers import AutoTokenizer
-
-from .Embed import DataEmbedding
 
 class Encoder_PCA(nn.Module):
     def __init__(self, input_dim, word_embedding, hidden_dim=768, num_heads=12, num_encoder_layers=1):

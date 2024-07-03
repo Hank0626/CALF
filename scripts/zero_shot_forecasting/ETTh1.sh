@@ -3,14 +3,15 @@ export CUDA_VISIBLE_DEVICES=5
 seq_len=96
 model=CALF
 
-
-for pred_len in 96 192 336 720
+for target_data in ETTm1 ETTm2
 do
+    for pred_len in 96 192 336 720
+        do
 
 python run.py \
     --root_path ./datasets/ETT-small/ \
     --data_path ETTh1.csv \
-    --is_training 0 \
+    --is_training 1 \
     --task_name long_term_forecast \
     --model_id ETTh1_$model'_'$seq_len'_'$pred_len \
     --data ETTh1 \
@@ -38,4 +39,5 @@ python run.py \
     --target_data ETTm2 \
 
 echo '====================================================================================================================='
+done
 done

@@ -119,6 +119,10 @@ if __name__ == '__main__':
     
     # few shot percentage
     parser.add_argument('--percent', type=int, default=100, help='few shot percentage')
+    
+    # zero shot
+    parser.add_argument('--zero_shot', type=int, default=0, help='1 for training zero shot')
+    parser.add_argument('--target_data', type=str, default="ETTm1", help='target data for zero shot')
 
     args = parser.parse_args()
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
