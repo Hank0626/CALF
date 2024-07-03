@@ -29,7 +29,7 @@ def data_provider(args, flag, vali=False):
         if args.task_name == 'anomaly_detection' or args.task_name == 'classification':
             batch_size = args.batch_size
         else:
-            batch_size = args.batch_size  
+            batch_size = 1
         freq = args.freq
     else:
         shuffle_flag = True
