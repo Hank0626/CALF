@@ -58,7 +58,7 @@ class Model(nn.Module):
 
         self.gpt2.h = self.gpt2.h[:configs.gpt_layers]
         self.gpt2_text.h = self.gpt2_text.h[:configs.gpt_layers]
-        # self.gpt2 = get_peft_model(self.gpt2, peft_config)
+        self.gpt2 = get_peft_model(self.gpt2, peft_config)
         
         word_embedding = torch.tensor(torch.load(configs.word_embedding_path)).to(device=device)
         
