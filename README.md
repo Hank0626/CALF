@@ -15,7 +15,7 @@ CALF (Orignal name: LLaTA) is a novel  cross-modal fine-tuing framework that eff
 <p align="center" id="fig-discrepancy">
     <img src="assets/discrepency.png" width="500" alt="Discrepancy Image">
     <br>
-    <strong>Figure 1:</strong> The t-SNE visualization of pre-trained word token embeddings of LLM with temporal tokens from <a href="https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All">GPT4TS</a> (Left) and our method (Right). Our method shows more cohesive integration, indicating effective modality alignment.
+    <strong>Figure 1:</strong> The t-SNE visualization of pre-trained word token embeddings of LLM with the hidden features from the penultimate layer from <a href="https://github.com/DAMO-DI-ML/NeurIPS2023-One-Fits-All">GPT4TS</a>, <a href="https://github.com/KimMeen/Time-LLM">TimeLLM</a>, <a href="https://github.com/SCXsunchenxi/TEST">TEST</a>, and ours of ETTh2 dataset. Current LLM-based methods either use linear layers to project time series to the LLM's feature dimension or employ cross-attention and contrastive learning techniques, which address only the input side and overlook alignment in the deeper layers. Our CALF achieves better alignment through multi-level cross-modal fine-tuning.
 </p>
 
 To bridge the modality gap between textual and temporal data, we introduce three meticulously designed cross-modal fine-tuning techniques (see [Figure 2](#fig-workflow)): 
