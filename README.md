@@ -7,6 +7,7 @@
 
 [![](http://img.shields.io/badge/cs.LG-arXiv%3A2403.07300-B31B1B.svg)](https://arxiv.org/abs/2403.07300)
 
+[[中文解读1](https://mp.weixin.qq.com/s/6LT2veAPKNTMjAHiOTT0EA)][[中文解读2](https://mp.weixin.qq.com/s/aie2TAPciZfdwwpl9rGpWw)]
 
 ## Introduction
 
